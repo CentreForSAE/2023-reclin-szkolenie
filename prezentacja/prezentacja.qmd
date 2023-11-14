@@ -5,6 +5,8 @@ format:
   revealjs:
       number-sections: true
       number-depth: 1
+      width: 1600
+      heigth: 900
 ---
 
 ```{r setup, include = FALSE}
@@ -426,6 +428,15 @@ stringdist(a = "miasto Poznań",
 ```
 
 ## Odległość Jaccarda
+
++ Indeks Jaccarda, współczynnik podobieństwa Jaccarda – statystyka używana do porównywania zbiorów.
++ Wzór na indeks Jaccarda
+
+$$
+J(A, B)=\frac{|A \cap B|}{|A \cup B|}
+$$
+
++ W przypadku porównywania tekstów mówimy relacji części wspólnej do długości
 
 ## $q$-grams
 

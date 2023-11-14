@@ -1,4 +1,8 @@
 
+## Linki
+
++ [prezentacja](https://htmlpreview.github.io/?https://raw.githubusercontent.com/CentreForSAE/2023-reclin-szkolenie/main/prezentacja/prezentacja.html)
+
 ## Plan szkolenia:
 
 1. Łączenie danych: 
