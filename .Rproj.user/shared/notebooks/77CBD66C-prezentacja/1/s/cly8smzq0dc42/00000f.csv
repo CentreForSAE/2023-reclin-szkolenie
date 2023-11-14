@@ -1,0 +1,8 @@
+"0","stringdist(a = ""miasto Poznań"",
+           b = ""m.Poznan"",
+           method = ""lcs"")
+"
+"1","[1]"
+"1"," 9"
+"1","
+"

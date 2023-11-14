@@ -1,0 +1,436 @@
+---
+title: "Probabilisyczne łączenie rekordów"
+author: "Maciej Beręsewicz (Urząd Statystyczny w Poznaniu)"
+format: 
+  revealjs:
+      number-sections: true
+      number-depth: 1
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(countdown)
+library(stringdist)
+```
+
+# Początek
+
+## Oczekiwania dot. szkolenia
+
+```{r}
+countdown(minutes = 7, bottom = 0)
+```
+
+Proszę wejść na stronę www.menti.com i podać kod
+
+**7379 4838**
+
+## Oczekiwania dot. szkolenia
+
+Wyniki
+
+## Doświadczenie w zakresie integracji danych
+
+```{r}
+countdown(minutes = 7, bottom = 0)
+```
+
+Proszę wejść na stronę www.menti.com i podać kod
+
+**3507 6668**
+
+## Doświadczenie w zakresie integracji danych
+
+Wyniki
+
+## Wprowadzenie
+
+1.  Wprowadzenie do łączenia danych
+2.  Procedura probabilistycznego łączenia rekordów
+3.  Porównywanie tekstów
+4.  Blokowanie rekordów do porównań
+5.  Łączenie rekordów: nienadzorowane
+6.  Łączenie rekordów: nadzorowane
+
+## Motywacja
+
+| Rejestr | Liczba cudzoziemców |
+|---------|--------------------:|
+| PESEL   |           2 004 765 |
+| ZUS     |             957 539 |
+| MF      |           1 513 129 |
+| KRUS    |              67 932 |
+| NFZ     |           2 034 434 |
+| UdSC    |             545 873 |
+
+## Motywacja
+
+| Rejestr   |     Etap1 |     Etap2 | Bez identyfikatorów |
+|-----------|----------:|----------:|--------------------:|
+| KRUS      |     4 674 |    18 317 |              42 693 |
+| MF        | 1 043 769 | 1 132 840 |             352 088 |
+| NFZ       | 1 987 884 | 1 987 891 |              42 524 |
+| ZUS       |   624 113 |   760 765 |             117 926 |
+| Wszystkie | 1 988 650 | 1 989 390 |                 \-- |
+
+## Motywacja
+
+| Imie        | Imie2 | Nazwisko       | Rok urodzenia |
+|-------------|-------|----------------|---------------|
+| Miguel      | Luis  | Pereira Tinoco | 1969          |
+| Miguel Luis |       | Pereira-Tinoco | 1969          |
+| Miguel      |       | Pereira-Tinoco | 1968          |
+| Thi         | Hy    | Dao            | 1993          |
+| Dao Thi Hy  |       |                | 1993          |
+| Thi         |       | Dao            | 1992          |
+
+# Wprowdzenie do łączenia danych
+
+## Łączenie deterministyczne
+
+![Przykładowe łączenie danych po kluczach (źródło:
+<https://phpmajster.blogspot.com/2015/06/sql-aliasy-i-zaczenia-wielu-tabel-za.html>)](https://1.bp.blogspot.com/-IlS27_IERRk/VXXmC_DZHKI/AAAAAAAAIyM/WqqfjygxDYg/s1600/relacje.png){fig-align="center"}
+
+## Łączenie probabilistyczne
+
+![Przykładowe łączenie danych bez kluczy (źródło: Roszka
+(2012))](images/roszka.png){fig-align="center"}
+
+## Łączenie probabilistyczne (procedura)
+
+![Algorytm integracji danych. Źródło: Data Integration Manual
+(2006)](images/procedura.png){fig-align="center"}
+
+## Łączenie probabilistyczne (literatura)
+
+![Binette, O., & Steorts, R. C. (2022). (Almost) all of entity
+resolution. Science Advances,
+8(12)](images/literatura1.png){fig-align="center"}
+
+## Łączenie probabilistyczne (literatura)
+
+![Źródło:
+https://www.wbc.poznan.pl/publication/326096](images/roszka-dr.png){fig-align="center"}
+
+# Porównywanie napisów
+
+## Problem
+
+Jak wyznaczyć odległość między następującymi rekordami?
+
+| Imie        | Imie2 | Nazwisko    | Data urodzenia | Gmina     |
+|-------------|-------|-------------|----------------|-----------|
+| Maciej      | E     | Beręsewicz  | 1987           | Poznań    |
+| Maciej Eryk |       | Berecewicz  | 1987           | Poznań    |
+| Maciej      | Eryk  | Berensewicz | 1987           | Białystok |
+
+: Przykładowe dane
+
+## Miary odległości między napisami
+
+![Lista miar odległości między napisami (źródło:
+https://www.baeldung.com/cs/string-similarity-edit-distance)](https://www.baeldung.com/wp-content/uploads/sites/4/2020/11/sim-families1.png){fig-align="center"}
+
+## Pakiety w R do wyznaczania odległości
+
+-   pakiet `stringdist` (artykuł: Van der Loo, M. P. (2014). The
+    stringdist package for approximate string matching. *R Journal*,
+    *6*(1), 111.)
+-   pakiet `stringi` (artykuł: Gagolewski, M. (2022). stringi: Fast and
+    portable character string processing in R. *Journal of Statistical
+    Software*, *103*, 1-59.)
+-   pakiet `reclin2` (artykuł: van der Laan, D. J. (2022). reclin2: a
+    Toolkit for Record Linkage and Deduplication. *R Journal*, *14*(2).)
+
+## Miary odległości
+
+-   Zastąpienie znaku, jak w "foo" -\> "boo".
+-   Usunięcie znaku, jak w 'foo' -\> 'oo'.
+-   Wstawienie znaku, jak w 'foo' -\> 'floo'.
+-   Transpozycja dwóch sąsiadujących znaków, jak w 'foo' -\> 'ofo'.
+
+## Odległość Hamminga
+
+-   **Odległośc Hamminga** to miara odmienności dwóch ciągów o takiej
+    samej długości, wyrażająca liczbę miejsc (pozycji), na których te
+    dwa ciągi się różnią. Innymi słowy jest to najmniejsza liczba zmian
+    (operacji zastępowania elementu innym), jakie pozwalają
+    przeprowadzić jeden ciąg na drugi.
+
+-   [Uwaga]{.underline}: tylko ciągi o tej samej długości
+
+    |     |     |     |       |       |     |     |     |     |     |
+    |-----|-----|-----|-------|-------|-----|-----|-----|-----|-----|
+    | B   | E   | R   | **Ę** | **S** | E   | W   | I   | C   | Z   |
+    | B   | E   | R   | **E** | **C** | E   | W   | I   | C   | Z   |
+
+## Odległość Hamminga (ćwiczenia)
+
+```{r}
+countdown(minutes = 5, bottom = 0)
+```
+
+-   Ćwiczenie: ile wynosi odległość Hamminga dla następujących napisów:
+    -   warmińsko-mazurskie / warminsko mazurskie
+    -   miasto Poznań / miasto Poznan
+
+## Odległość Hamminga (przykład w R)
+
+-   Przykład dla równych napisów
+
+```{r hamming, echo = TRUE}
+stringdist(a = "beręsewicz",
+           b = "berecewicz",
+           method = "hamming")
+```
+
+-   Przykład dla równych napisów
+
+```{r hamming2, echo = TRUE}
+stringdist(a = "warmińsko-mazurskie",
+           b = "warminsko mazurskie",
+           method = "hamming")
+```
+
+## Odległość Hamminga (przykład w R)
+
+-   Przykład dla napisów o nierównej długości
+
+```{r hamming3, echo = TRUE}
+stringdist(a = "warmińsko-mazurskie",
+           b = "warminskomazurskie",
+           method = "hamming")
+```
+
+## Odległość Hamminga (przykład w R)
+
+-   Przykład dla równych napisów
+
+```{r hamming4, echo = TRUE}
+stringsim(a = "beręsewicz",
+          b = "berecewicz",
+          method = "hamming")
+```
+
+Wyznaczone jako
+
+$$
+1 - \frac{\text{dist}}{\text{max (długość tekstów)}}
+$$
+
+## Odległość Hamminga (przykład w R)
+
+-   Odległość między wektorem, a referencją
+
+```{r hamming5, echo = TRUE}
+stringsim(a = c("Beręsewicz", "Berencewicz", "Beręcewicz"),
+          b = "beręsewicz",
+          method = "hamming")
+```
+
+-   Odległość między wektorem, a wektorem (macierz)
+
+```{r hamming6, echo = TRUE}
+stringsimmatrix(a = c("Beręsewicz", "Berencewicz", "Beręcewicz"),
+                b = c("Beręsewicz", "Berencewicz", "Beręcewicz"),
+                method = "hamming")
+```
+
+## Najdłuższy wspólny podciąg
+
+-   ang. *Longest Common Substring* (LCS)
+
+-   Odległość LCS jest wtedy liczbą niesparowanych znaków w obu
+    łańcuchach
+
+    |     |     |     |       |       |     |     |     |     |     |
+    |-----|-----|-----|-------|-------|-----|-----|-----|-----|-----|
+    | B   | E   | R   | **Ę** | **S** | E   | W   | I   | C   | Z   |
+    | B   | E   | R   | **E** | **C** | E   | W   | I   | C   | Z   |
+
+-   Odległość wynosi 4
+
+## Odległość LCS (ćwiczenia)
+
+```{r}
+countdown(minutes = 5, bottom = 0)
+```
+
+-   Ćwiczenie: ile wynosi odległość LCS dla następujących napisów:
+    -   warmińsko-mazurskie / warminskomazurskie
+    -   miasto Poznań / m.Poznan
+
+## LCS (przykład w R)
+
+-   Metoda `lcs`
+
+```{r lcs1, echo = TRUE}
+stringdist(a = "beręsewicz",
+           b = "berecewicz",
+           method = "lcs")
+```
+
+## LCS (rozwiązania ćwiczeń)
+
+-   ćwiczenie 1
+
+```{r lcs2, echo = TRUE}
+stringdist(a = "warmińsko-mazurskie",
+           b = "warminskomazurskie",
+           method = "lcs")
+```
+
+-   ćwiczenie 2
+
+```{r lcs3, echo = TRUE}
+stringdist(a = "miasto Poznań",
+           b = "m.Poznan",
+           method = "lcs")
+```
+
+## Odległość Levenshteina
+
+-   Odległość Levenshteina (edycyjna) - miara odmienności napisów
+    (skończonych ciągów znaków), zaproponowana w 1965 roku przez
+    Władimira Lewensztejna.
+-   Formalnie jest to metryka w przestrzeni ciągów znaków, zdefiniowana
+    następująco:
+    -   działaniem prostym na napisie nazwiemy:
+        -   wstawienie nowego znaku do napisu,
+        -   usunięcie znaku z napisu,
+        -   zamianę znaku w napisie na inny znak.
+    -   odległością pomiędzy dwoma napisami jest najmniejsza liczba
+        działań prostych, przeprowadzających jeden napis na drugi.
+
+## Odległość Levenshteina (przykład)
+
+-   Przykład 1
+
+    |     |     |     |       |       |     |     |     |     |     |
+    |-----|-----|-----|-------|-------|-----|-----|-----|-----|-----|
+    | B   | E   | R   | **Ę** | **S** | E   | W   | I   | C   | Z   |
+    | B   | E   | R   | **E** | **C** | E   | W   | I   | C   | Z   |
+
+-   Zamiany:
+
+    -   e -\> ę
+    -   s -\> c
+
+-   Odległosć: 2
+
+## Odległość Levenshteina (przykład)
+
+-   Przykład 2
+
+    |     |     |     |       |       |       |     |     |     |     |     |
+    |-----|-----|-----|-------|-------|-------|-----|-----|-----|-----|-----|
+    | B   | E   | R   | **Ę** | **S** | E     | W   | I   | C   | Z   |     |
+    | B   | E   | R   | **E** | **N** | **S** | E   | W   | I   | C   | Z   |
+
+-   Zamiany:
+
+    -   e -\> ę
+    -   usunięcie n
+
+-   odległość: 2
+
+## Odległosć Levenshteina (ćwiczenia)
+
+```{r}
+countdown(minutes = 5, bottom = 0)
+```
+
+-   Ćwiczenie: ile wynosi odległość Levenshteina dla następujących
+    napisów:
+    -   warmińsko-mazurskie / warminskomazurskie
+    -   miasto Poznań / m.Poznan
+
+## Przykład w R
+
+```{r lv, echo = TRUE}
+stringdist(a = "beręsewicz",
+           b = "berensewicz",
+           method = "lv")
+```
+
+## Levenshteina (rozwiązania ćwiczeń)
+
+-   ćwiczenie 1
+
+```{r lv2, echo = TRUE}
+stringdist(a = "warmińsko-mazurskie",
+           b = "warminskomazurskie",
+           method = "lv")
+```
+
+-   ćwiczenie 2
+
+```{r lv3, echo = TRUE}
+stringdist(a = "miasto Poznań",
+           b = "m.Poznan",
+           method = "lv")
+```
+
+## Optymalne wyrównanie ciągów
+
+-   ang. *optimal string alignment* (OSA; inaczej też ang. *restricted
+    Damerau-Levenshtein* distance ale nie *Damerau-Levenshtein
+    distance*)
+-   rozszerza odległość Levenshteina o możliwość zamiany miejscami
+    sąsiadujących znaków
+
+## OSA (przykład)
+
+-   Przykład 1
+
+    |     |     |     |       |       |       |     |     |     |     |
+    |-----|-----|-----|-------|-------|-------|-----|-----|-----|-----|
+    | B   | E   | R   | **Ę** | **S** | **E** | W   | I   | C   | Z   |
+    | B   | E   | R   | **E** | **E** | **S** | W   | I   | C   | Z   |
+
+## Osa (ćwiczenia)
+
+```{r}
+countdown(minutes = 5, bottom = 0)
+```
+
+-   Ćwiczenie: ile wynosi odległość Levenshteina dla następujących
+    napisów:
+    -   warmińsko-mazurskie / warminsok-mazurskie
+    -   miasto Poznań / m.Opznań
+
+
+## OSA (przykład w R)
+
+```{r osa1, echo = TRUE}
+stringdist(a = "beręsewicz",
+           b = "beręeswicz",
+           method = "osa")
+```
+## OSA (rozwiązania ćwiczeń)
+
+-   ćwiczenie 1
+
+```{r osa2, echo = TRUE}
+stringdist(a = "warmińsko-mazurskie",
+           b = "warminsok-mazurskie",
+           method = "osa")
+```
+
+-   ćwiczenie 2
+
+```{r osa3, echo = TRUE}
+stringdist(a = "miasto Poznań",
+           b = "m.Opznań",
+           method = "osa")
+```
+
+## Odległość Jaccarda
+
+## $q$-grams
+
+## Odległość cosinusowa
+
+## Odległość Jaro
+
+## Odległość Jaro-Winklera
