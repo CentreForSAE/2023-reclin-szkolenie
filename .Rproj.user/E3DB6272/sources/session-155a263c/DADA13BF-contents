@@ -1,5 +1,5 @@
 
-Plan szkolenia:
+## Plan szkolenia:
 
 1. Łączenie danych: 
   + deterministyczne
@@ -14,3 +14,9 @@ Plan szkolenia:
 5. Probabilistyczne łączenie rekordów
   + metody nienadzorowane
   + metody nadzorowane
+
+## Wymagania
+
++ R
++ pakiety `stringdist`, `reclin2`, `blocking`.
+
