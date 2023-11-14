@@ -13,6 +13,8 @@ format:
 knitr::opts_chunk$set(echo = FALSE)
 library(countdown)
 library(stringdist)
+library(igraph)
+library(RANN)
 ```
 
 # Początek
@@ -390,17 +392,16 @@ stringdist(a = "miasto Poznań",
     | B   | E   | R   | **Ę** | **S** | **E** | W   | I   | C   | Z   |
     | B   | E   | R   | **E** | **E** | **S** | W   | I   | C   | Z   |
 
-## Osa (ćwiczenia)
+## OSA (ćwiczenia)
 
 ```{r}
 countdown(minutes = 5, bottom = 0)
 ```
 
--   Ćwiczenie: ile wynosi odległość Levenshteina dla następujących
+-   Ćwiczenie: ile wynosi odległość OSA dla następujących
     napisów:
     -   warmińsko-mazurskie / warminsok-mazurskie
     -   miasto Poznań / m.Opznań
-
 
 ## OSA (przykład w R)
 
@@ -409,6 +410,7 @@ stringdist(a = "beręsewicz",
            b = "beręeswicz",
            method = "osa")
 ```
+
 ## OSA (rozwiązania ćwiczeń)
 
 -   ćwiczenie 1
@@ -429,19 +431,399 @@ stringdist(a = "miasto Poznań",
 
 ## Odległość Jaccarda
 
-+ Indeks Jaccarda, współczynnik podobieństwa Jaccarda – statystyka używana do porównywania zbiorów.
-+ Wzór na indeks Jaccarda
+-   Indeks Jaccarda, współczynnik podobieństwa Jaccarda -- statystyka
+    używana do porównywania zbiorów.
+-   Wzór na indeks Jaccarda
 
 $$
 J(A, B)=\frac{|A \cap B|}{|A \cup B|}
 $$
 
-+ W przypadku porównywania tekstów mówimy relacji części wspólnej do długości
+-   W przypadku porównywania tekstów mówimy relacji części wspólnej do
+    długości
 
-## $q$-grams
+## Odległość Jaccarda (przykład)
+
+-   Przykład 1
+
+    |     |     |     |       |       |     |     |     |     |     |
+    |-----|-----|-----|-------|-------|-----|-----|-----|-----|-----|
+    | B   | E   | R   | **Ę** | **S** | E   | W   | I   | C   | Z   |
+    | B   | E   | R   | **E** | **C** | E   | W   | I   | C   | Z   |
+
+-   część wspólna: 7
+
+-   suma unikalnych znaków: 9
+
+-   odległosć: 1 - 7/9 = 2/9 ($\aprox$ 0.22)
+
+## Odległość Jaccarda (przykład)
+
+-   Przykład 2
+
+    |     |     |     |       |       |       |     |     |     |     |     |
+    |-----|-----|-----|-------|-------|-------|-----|-----|-----|-----|-----|
+    | B   | E   | R   | **Ę** | **S** | E     | W   | I   | C   | Z   |     |
+    | B   | E   | R   | **E** | **N** | **S** | E   | W   | I   | C   | Z   |
+
+-   część wspólna: 7
+
+-   suma unikalnych znaków: 10
+
+-   odległosć: 1 - 7/10 = 1/3
+
+## Odległość Jaccarda (ćwiczenia)
+
+```{r}
+countdown(minutes = 10, bottom = 0)
+```
+
+-   Ćwiczenie: ile wynosi odległość Jaccarda dla następujących
+    napisów:
+    -   warmińsko-mazurskie / warminsok-mazurskie
+    -   miasto poznań / m.ppznań
+
+## Odległość Jaccarda (przykład w R)
+
+-   Przykład 1
+
+```{r jacc1a, echo=TRUE}
+qgrams(a = "beręsewicz",
+       b = "berecewicz",
+       q = 1)
+```
+
+```{r jacc1b, echo=TRUE}
+stringdist(a = "beręsewicz",
+           b = "berecewicz",
+           method = "jaccard", 
+           q = 1)
+```
+
+## Odległość Jaccarda (przykład w R)
+
+-   Przykład 2
+
+```{r jacc2a, echo=TRUE}
+qgrams(a = "beręsewicz",
+       b = "berencewicz",
+       q = 1)
+```
+
+```{r jacc2b, echo=TRUE}
+stringdist(a = "beręsewicz",
+           b = "berencewicz",
+           method = "jaccard", 
+           q = 1)
+```
+
+## Odległość Jaccarda (rozwiązania ćwiczeń)
+
+-   ćwiczenie 1
+
+```{r jacc3a, echo = TRUE}
+qgrams(a = "warmińsko-mazurskie",
+       b = "warminsok-mazurskie",
+       q = 1)
+```
+
+```{r jacc3b, echo = TRUE}
+stringdist(a = "warmińsko-mazurskie",
+           b = "warminsok-mazurskie",
+           method = "jaccard")
+```
+
+## Odległość Jaccarda (rozwiązania ćwiczeń)
+
+-   ćwiczenie 2
+
+```{r jacc4a, echo = TRUE}
+qgrams(a = "miasto poznań",
+       b = "m.opznań",
+       q = 1)
+```
+
+```{r jacc4b, echo = TRUE}
+stringdist(a = "miasto poznań",
+           b = "m.opznań",
+           method = "jaccard")
+```
+
+## $q$-gramy
+
+-   często wykorzystuje się do porównań $q$-gramy (np. 2-gramy, czasem
+    też nazywane shingles jeżeli odnosimy się do liter),
+-   mozna użyć albo odległości Jaccarda albo $q$-gram,
+-   $q$-gram zdefiniowana jest następująco uzyskuje się poprzez
+    zestawienie q-gramów występujących w dwóch ciągach i zliczenie
+    liczby q-gramów, które nie są współdzielone między nimi.
+
+## $q$-gramy (Przykład)
+
++ 1-gramy: `{B,e,r,ę,s,e,w,i,cz}`
++ 2-gramy: `{Be, er, rę, ęs, se, ew, wi, ic, cz}`
++ 3-gramy: `{Ber, erę, ręs, ęse, sew, wic, ewi, icz}`
+
+## $q$-gramy (Przykład w R)
+
+```{r qgrams1a, echo = TRUE}
+qgrams("Beręsewicz", q=1)
+qgrams("Beręsewicz", q=2)
+qgrams("eręsewicz", q=3)
+```
+
+```{r qgrams1b, echo = TRUE}
+qgrams(a = "beręsewicz",
+       b = "berencewicz",
+       q = 2)
+```
+
+## $q$-gramy (Przykład w R)
+
++ odległość Jaccarda na 1-gramach
+```{r jac-qgram1}
+stringdist(a = "beręsewicz",
+           b = "berencewicz",
+           method = "jaccard", 
+           q = 1)
+```
+
++ odległość $q$-gram na 1-gramach
+
+```{r jac-qgram2}
+stringdist(a = "beręsewicz",
+           b = "berencewicz",
+           method = "qgram", 
+           q = 1)
+```
+
+## Odległość $q$-gram (ćwiczenia)
+
+```{r}
+countdown(minutes = 10, bottom = 0)
+```
+
+-   Ćwiczenie: ile wynosi odległość $q$-gram dla następujących
+    napisów:
+    -   warmińsko-mazurskie / warminsok-mazurskie
+    -   miasto poznań / m.ppznań
+    
+    Wykorzystując $q$ równe 2 i 3.
+    
+## Odległość $q$-gram (rozwiązania ćwiczeń)
+
+-   ćwiczenie 1
+
+```{r q1, echo = TRUE}
+qgrams(a = "warmińsko-mazurskie",
+       b = "warminsok-mazurskie",
+       q = 2)
+```
+
+```{r q2, echo = TRUE}
+stringdist(a = "warmińsko-mazurskie",
+           b = "warminsok-mazurskie",
+           method = "qgram",
+           q=2)
+```
+
+## Odległość $q$-gram (rozwiązania ćwiczeń)
+
+-   ćwiczenie 2
+
+```{r q3, echo = TRUE}
+qgrams(a = "miasto poznań",
+       b = "m.ppznań",
+       q = 2)
+```
+
+```{r q4, echo = TRUE}
+stringdist(a = "miasto poznań",
+           b = "m.ppznań",
+           method = "qgram",
+           q=2)
+```
+
 
 ## Odległość cosinusowa
 
++ miara odległosci (tak naprawdę kąt) między dwoma wektorami utworzonymi przez $q$-gramy
++ wzór:
+
+$$
+1-\frac{v_1 v_2}{||v_1||_2||v_2||_2},
+$$
+
+gdzie $||.||_2$ oznacza normę Euklidesową $\sqrt{\sum_i v_{1,i}^2}$.
+
+## Odległość cosinusowa (przykład)
+
++ rozważmy tylko imię: maciej i maicej i 2-gramy
++ pierwsze: `{ma, ac, ci,ie,ej}`
++ drugie: `{ma, ai, ic, ce, ej}`
++ w zapisie wektorowym:
+
+```{r}
+res <- qgrams(a= "maciej", b="maicej", q=2)
+v1 <- res[1, ]
+v2 <- res[2, ]
+licznik <- sum(v1*v2)
+mianownik <- sqrt(sum(v1^2))*sqrt(sum(v2^2))
+res
+```
+
++ odległość:
+
+$$
+1- \frac{v_1 v_2}{||v_1||_2||v_2||_2} = \frac{`r licznik`}{`r mianownik`} = `r 1-licznik/mianownik`.
+$$
+
+## Odległość cosinusowa (przykład w R)
+
+```{r cos1, echo = TRUE}
+stringdist("maciej",
+           "maicej",
+           method = "cosine",
+           q=2)
+```
+
+## Odległość cosinowa (ćwiczenia)
+
+```{r}
+countdown(minutes = 10, bottom = 0)
+```
+
+-   Ćwiczenie: ile wynosi odległość $q$-gram dla następujących
+    napisów:
+    -   warmińsko-mazurskie / warminsok-mazurskie
+    -   miasto poznań / m.ppznań
+    
+    Wykorzystując $q$ równe 2 i 3.
+    
+
+## Odległość cosinowa (rozwiązania ćwiczeń)
+
+-   ćwiczenie 1
+
+```{r c1, echo = TRUE}
+qgrams(a = "warmińsko-mazurskie",
+       b = "warminsok-mazurskie",
+       q = 2)
+```
+
+```{r c2, echo = TRUE}
+stringdist(a = "warmińsko-mazurskie",
+           b = "warminsok-mazurskie",
+           method = "cosine",
+           q=2)
+```
+
+## Odległość cosinowa (rozwiązania ćwiczeń)
+
+-   ćwiczenie 2
+
+```{r c3, echo = TRUE}
+qgrams(a = "miasto poznań",
+       b = "m.ppznań",
+       q = 2)
+```
+
+```{r c4, echo = TRUE}
+stringdist(a = "miasto poznań",
+           b = "m.ppznań",
+           method = "cosine",
+           q=2)
+```
+
+
 ## Odległość Jaro
 
++ Podobieństwo Jaro między ciągami znaków a i b wyraża się następującym wzorem:
++ Wzór
+
+$$
+\left\{\begin{array}{ll}0 & \text { dla } m=0 \\ 1- \frac{1}{3}\left(\frac{m}{|a|}+\frac{m}{|b|}+\frac{m-t}{m}\right) & \text { dla } m \neq 0\end{array}\right.
+$$
+gdzie
+
++ \(m\) to liczba pasujących znaków. Dwa znaki, odpowiednio z a i \(b\), sa uważane
+za pasujące tylko wtedy, gdy są takie same i są nie dalej niż \(\left\lfloor\frac{\max (|a|,|b|)}{2}\right\rfloor-1\)
+znaków od siebie,
++ \(t\) to liczba dopasowań po transpozycji drugiego ciągu znaków, podzielona
+przez 2.
+
+## Odległość Jaro (przykład w R)
+
+```{r ja, echo = TRUE}
+stringdist("maciej",
+           "maicej",
+           method = "jw")
+```
+
 ## Odległość Jaro-Winklera
+
++ Algorytm Winklera jest ulepszeniem algorytmu Jaro, powstałym poprzez zastosowanie pomysłów opartych na obserwacjach empirycznych, które wykazały, że mniej błędów występuje zwykle na początku błędnie zapisanych nazwisk osób
++ Algorytm Winklera zwiększa zatem miarę podobieństwa Jaro dla identycznych znaków początkowych:
+
+$$
+d_{\mathrm{jw}}(a, b)=d_{\mathrm{jaro}}(a, b)[1-p \ell(a, b)],
+$$
+
+gdzie $\ell(.)$ jest długością wspólnego prefiksu na początku obu ciągów, maksymalnie
+wynoszącą 4, a p jest współczynnikiem skalowania (nie więcej niż 0.25)
+
+## Odległość Jaro-Winklera (przykład w R)
+
+```{r jw, echo = TRUE}
+stringdist("maciej",
+           "maicej",
+           method = "jw",
+           p = 0.1)
+```
+
+## Podsumowanie
+
++ Ostatecznie wybór zależy od zastosowania, ale istnieją pewne ogólne rozważania. 
++ Wybór między metryką opartą na edycji lub metryką heurystyczną z jednej strony a odległością opartą na q-gramie z drugiej, jest w pewnym stopniu zależy od długości ciągu znaków. 
++ W przeciwieństwie do metryk opartych na edycji lub heurystycznych, metryki oparte na q-gramach można łatwo obliczyć między bardzo długimi ciągami tekstowymi, ponieważ liczba q-gramów napotykanych w języku w języku naturalnym (np. q ≥ 3) jest zwykle znacznie mniejsza niż q-gramy dozwolone przez alfabet. 
+
+## Podsumowanie
+
++ Wybór odległości opartej na edycji zależy głównie od wymaganej dokładności. Na przykład, w słowniku gdzie różnice między dopasowanymi i słownikowymi elementami są niewielkie, odległość edycji, która pozwala na więcej typów operacji edycji (takich jak optymalne wyrównanie ciągów lub odległość Damerau-Levenshtein) może dać lepsze wyniki. 
++ Heurystyczne odległości Jaro i Jaro-Winklera zostały zaprojektowane dla
+zostały zaprojektowane z myślą o stosunkowo krótkich ciągach znaków wpisywanych przez człowieka, więc ich obszar zastosowania jest jasny.
+
+# Blokowanie rekordów
+
+## Idea blokowania rekordów
+
++ mając 3 rekordy (a, b, c) w bazie danych liczba możliwych porównań to 3 (ab, ac, bc)
++ mając 10 rekordów mamy: 45
++ mając 50000 rekordów mamy: `r choose(50000,2)`
++ liczba kombinacji: n*(n-1)/2
++ nie da się tego zrobić dla dużych zbiorów danych
+
+## Z czego się korzysta?
+
++ blokowanie wg zmiennych, które są dobrej jakości (np. rok urodzenia, płeć),
++ blokowanie po pierwszych literach imion i nazwisk,
++ może się jednak zdarzyć tak, że daty urodzeń czy imiona są błędnie zapisane,
++ wtedy warto skorzystać z wyszukiwania z wykorzystaniem (przybliżonych) najbliższych sąsiadów i grafów.
+
+## Przykład
+
+```{r przyklad, echo=T}
+dane <- qgrams(.list = list("maciejj", "majej", "ana", "annna"), q=2)
+dane_rej <- qgrams(.list = list("maciej", "anna"), q=2)
+vars <- intersect(colnames(dane), colnames(dane_rej))
+wysz <- nn2(data = dane[,vars], dane_rej[, vars], , k= 1)
+do_grafu <- data.frame(query = 1:4, neg = rep(wysz$nn.idx[,1], each=2))
+g1 <- graph_from_data_frame(do_grafu)
+plot(g1)
+```
+
+
+# Pakiet `reclin2`
+
+Przejdzmy do pakietu `reclin2`
+

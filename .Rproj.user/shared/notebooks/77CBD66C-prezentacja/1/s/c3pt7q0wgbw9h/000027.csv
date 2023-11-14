@@ -1,0 +1,7 @@
+"0","dane <- qgrams(.list = list(""maciejj"", ""majej"", ""ana"", ""annna""), q=2)"
+"0","dane_rej <- qgrams(.list = list(""maciej"", ""anna""), q=2)"
+"0","vars <- intersect(colnames(dane), colnames(dane_rej))"
+"0","wysz <- nn2(data = dane[,vars], dane_rej[, vars], , k= 1)"
+"0","do_grafu <- data.frame(query = 1:4, neg = rep(wysz$nn.idx[,1], each=2))"
+"0","g1 <- graph_from_data_frame(do_grafu)"
+"0","plot(g1)"

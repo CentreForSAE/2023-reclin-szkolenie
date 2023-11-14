@@ -1,0 +1,8 @@
+"0","stringdist(a = ""miasto poznań"",
+           b = ""m.opznań"",
+           method = ""jaccard"")
+"
+"1","[1]"
+"1"," 0.4166667"
+"1","
+"

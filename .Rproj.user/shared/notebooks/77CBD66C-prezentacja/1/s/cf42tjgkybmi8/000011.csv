@@ -1,0 +1,9 @@
+"0","stringdist(a = ""miasto poznań"",
+           b = ""m.ppznań"",
+           method = ""qgram"",
+           q=2)
+"
+"1","[1]"
+"1"," 13"
+"1","
+"

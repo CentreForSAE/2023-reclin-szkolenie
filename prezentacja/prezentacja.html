@@ -410,7 +410,7 @@ Maciej Beręsewicz (Urząd Statystyczny w Poznaniu)
 <h2>Oczekiwania dot. szkolenia</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_7c88d39c" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_44ee272f" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -427,7 +427,7 @@ Maciej Beręsewicz (Urząd Statystyczny w Poznaniu)
 <h2>Doświadczenie w zakresie integracji danych</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_e1cf6cc1" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_56e5d9af" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -713,7 +713,7 @@ Maciej Beręsewicz (Urząd Statystyczny w Poznaniu)
 <h2>Odległość Hamminga (ćwiczenia)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_365690c5" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_e347408f" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -852,7 +852,7 @@ Maciej Beręsewicz (Urząd Statystyczny w Poznaniu)
 <h2>Odległość LCS (ćwiczenia)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_8cb20166" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_adf7a007" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1020,7 +1020,7 @@ Maciej Beręsewicz (Urząd Statystyczny w Poznaniu)
 <h2>Odległosć Levenshteina (ćwiczenia)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_48c59832" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_e285972f" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -1112,17 +1112,17 @@ Maciej Beręsewicz (Urząd Statystyczny w Poznaniu)
 </ul>
 </section>
 <section id="osa-ćwiczenia" class="slide level2">
-<h2>Osa (ćwiczenia)</h2>
+<h2>OSA (ćwiczenia)</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_2e5b1804" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_6c33a071" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
 <ul>
-<li>Ćwiczenie: ile wynosi odległość Levenshteina dla następujących napisów:
+<li>Ćwiczenie: ile wynosi odległość OSA dla następujących napisów:
 <ul>
 <li>warmińsko-mazurskie / warminsok-mazurskie</li>
 <li>miasto Poznań / m.Opznań</li>
@@ -1178,21 +1178,566 @@ J(A, B)=\frac{|A \cap B|}{|A \cup B|}
 <li>W przypadku porównywania tekstów mówimy relacji części wspólnej do długości</li>
 </ul>
 </section>
-<section id="q-grams" class="slide level2">
-<h2><span class="math inline">\(q\)</span>-grams</h2>
+<section id="odległość-jaccarda-przykład" class="slide level2">
+<h2>Odległość Jaccarda (przykład)</h2>
+<ul>
+<li><p>Przykład 1</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>B</td>
+<td>E</td>
+<td>R</td>
+<td><strong>Ę</strong></td>
+<td><strong>S</strong></td>
+<td>E</td>
+<td>W</td>
+<td>I</td>
+<td>C</td>
+<td>Z</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>E</td>
+<td>R</td>
+<td><strong>E</strong></td>
+<td><strong>C</strong></td>
+<td>E</td>
+<td>W</td>
+<td>I</td>
+<td>C</td>
+<td>Z</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>część wspólna: 7</p></li>
+<li><p>suma unikalnych znaków: 9</p></li>
+<li><p>odległosć: 1 - 7/9 = 2/9 (<span class="math inline">\(\aprox\)</span> 0.22)</p></li>
+</ul>
+</section>
+<section id="odległość-jaccarda-przykład-1" class="slide level2">
+<h2>Odległość Jaccarda (przykład)</h2>
+<ul>
+<li><p>Przykład 2</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>B</td>
+<td>E</td>
+<td>R</td>
+<td><strong>Ę</strong></td>
+<td><strong>S</strong></td>
+<td>E</td>
+<td>W</td>
+<td>I</td>
+<td>C</td>
+<td>Z</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>E</td>
+<td>R</td>
+<td><strong>E</strong></td>
+<td><strong>N</strong></td>
+<td><strong>S</strong></td>
+<td>E</td>
+<td>W</td>
+<td>I</td>
+<td>C</td>
+<td>Z</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>część wspólna: 7</p></li>
+<li><p>suma unikalnych znaków: 10</p></li>
+<li><p>odległosć: 1 - 7/10 = 1/3</p></li>
+</ul>
+</section>
+<section id="odległość-jaccarda-ćwiczenia" class="slide level2">
+<h2>Odległość Jaccarda (ćwiczenia)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_d2b10649" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+<ul>
+<li>Ćwiczenie: ile wynosi odległość Jaccarda dla następujących napisów:
+<ul>
+<li>warmińsko-mazurskie / warminsok-mazurskie</li>
+<li>miasto poznań / m.ppznań</li>
+</ul></li>
+</ul>
+</section>
+<section id="odległość-jaccarda-przykład-w-r" class="slide level2">
+<h2>Odległość Jaccarda (przykład w R)</h2>
+<ul>
+<li>Przykład 1</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"beręsewicz"</span>,</span>
+<span id="cb31-2"><a href="#cb31-2"></a>       <span class="at">b =</span> <span class="st">"berecewicz"</span>,</span>
+<span id="cb31-3"><a href="#cb31-3"></a>       <span class="at">q =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  b e r ę s w z i c
+a 1 2 1 1 1 1 1 1 1
+b 1 3 1 0 0 1 1 1 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">stringdist</span>(<span class="at">a =</span> <span class="st">"beręsewicz"</span>,</span>
+<span id="cb33-2"><a href="#cb33-2"></a>           <span class="at">b =</span> <span class="st">"berecewicz"</span>,</span>
+<span id="cb33-3"><a href="#cb33-3"></a>           <span class="at">method =</span> <span class="st">"jaccard"</span>, </span>
+<span id="cb33-4"><a href="#cb33-4"></a>           <span class="at">q =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2222222</code></pre>
+</div>
+</div>
+</section>
+<section id="odległość-jaccarda-przykład-w-r-1" class="slide level2">
+<h2>Odległość Jaccarda (przykład w R)</h2>
+<ul>
+<li>Przykład 2</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"beręsewicz"</span>,</span>
+<span id="cb35-2"><a href="#cb35-2"></a>       <span class="at">b =</span> <span class="st">"berencewicz"</span>,</span>
+<span id="cb35-3"><a href="#cb35-3"></a>       <span class="at">q =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  b e r ę s w z i n c
+a 1 2 1 1 1 1 1 1 0 1
+b 1 3 1 0 0 1 1 1 1 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">stringdist</span>(<span class="at">a =</span> <span class="st">"beręsewicz"</span>,</span>
+<span id="cb37-2"><a href="#cb37-2"></a>           <span class="at">b =</span> <span class="st">"berencewicz"</span>,</span>
+<span id="cb37-3"><a href="#cb37-3"></a>           <span class="at">method =</span> <span class="st">"jaccard"</span>, </span>
+<span id="cb37-4"><a href="#cb37-4"></a>           <span class="at">q =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3</code></pre>
+</div>
+</div>
+</section>
+<section id="odległość-jaccarda-rozwiązania-ćwiczeń" class="slide level2">
+<h2>Odległość Jaccarda (rozwiązania ćwiczeń)</h2>
+<ul>
+<li>ćwiczenie 1</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"warmińsko-mazurskie"</span>,</span>
+<span id="cb39-2"><a href="#cb39-2"></a>       <span class="at">b =</span> <span class="st">"warminsok-mazurskie"</span>,</span>
+<span id="cb39-3"><a href="#cb39-3"></a>       <span class="at">q =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  w ń z a r s u m o n i k e -
+a 1 1 1 2 2 2 1 2 1 0 2 2 1 1
+b 1 0 1 2 2 2 1 2 1 1 2 2 1 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">stringdist</span>(<span class="at">a =</span> <span class="st">"warmińsko-mazurskie"</span>,</span>
+<span id="cb41-2"><a href="#cb41-2"></a>           <span class="at">b =</span> <span class="st">"warminsok-mazurskie"</span>,</span>
+<span id="cb41-3"><a href="#cb41-3"></a>           <span class="at">method =</span> <span class="st">"jaccard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1428571</code></pre>
+</div>
+</div>
+</section>
+<section id="odległość-jaccarda-rozwiązania-ćwiczeń-1" class="slide level2">
+<h2>Odległość Jaccarda (rozwiązania ćwiczeń)</h2>
+<ul>
+<li>ćwiczenie 2</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"miasto poznań"</span>,</span>
+<span id="cb43-2"><a href="#cb43-2"></a>       <span class="at">b =</span> <span class="st">"m.opznań"</span>,</span>
+<span id="cb43-3"><a href="#cb43-3"></a>       <span class="at">q =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  m s t z ń o p n i a   .
+a 1 1 1 1 1 2 1 1 1 2 1 0
+b 1 0 0 1 1 1 1 1 0 1 0 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">stringdist</span>(<span class="at">a =</span> <span class="st">"miasto poznań"</span>,</span>
+<span id="cb45-2"><a href="#cb45-2"></a>           <span class="at">b =</span> <span class="st">"m.opznań"</span>,</span>
+<span id="cb45-3"><a href="#cb45-3"></a>           <span class="at">method =</span> <span class="st">"jaccard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4166667</code></pre>
+</div>
+</div>
+</section>
+<section id="q-gramy" class="slide level2">
+<h2><span class="math inline">\(q\)</span>-gramy</h2>
+<ul>
+<li>często wykorzystuje się do porównań <span class="math inline">\(q\)</span>-gramy (np. 2-gramy, czasem też nazywane shingles jeżeli odnosimy się do liter),</li>
+<li>mozna użyć albo odległości Jaccarda albo <span class="math inline">\(q\)</span>-gram,</li>
+<li><span class="math inline">\(q\)</span>-gram zdefiniowana jest następująco uzyskuje się poprzez zestawienie q-gramów występujących w dwóch ciągach i zliczenie liczby q-gramów, które nie są współdzielone między nimi.</li>
+</ul>
+</section>
+<section id="q-gramy-przykład" class="slide level2">
+<h2><span class="math inline">\(q\)</span>-gramy (Przykład)</h2>
+<ul>
+<li>1-gramy: <code>{B,e,r,ę,s,e,w,i,cz}</code></li>
+<li>2-gramy: <code>{Be, er, rę, ęs, se, ew, wi, ic, cz}</code></li>
+<li>3-gramy: <code>{Ber, erę, ręs, ęse, sew, wic, ewi, icz}</code></li>
+</ul>
+</section>
+<section id="q-gramy-przykład-w-r" class="slide level2">
+<h2><span class="math inline">\(q\)</span>-gramy (Przykład w R)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">qgrams</span>(<span class="st">"Beręsewicz"</span>, <span class="at">q=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   B e r ę s w z i c
+V1 1 2 1 1 1 1 1 1 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">qgrams</span>(<span class="st">"Beręsewicz"</span>, <span class="at">q=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Be er rę ęs se wi ew ic cz
+V1  1  1  1  1  1  1  1  1  1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">qgrams</span>(<span class="st">"eręsewicz"</span>, <span class="at">q=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   erę ręs ęse sew wic ewi icz
+V1   1   1   1   1   1   1   1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"beręsewicz"</span>,</span>
+<span id="cb53-2"><a href="#cb53-2"></a>       <span class="at">b =</span> <span class="st">"berencewicz"</span>,</span>
+<span id="cb53-3"><a href="#cb53-3"></a>       <span class="at">q =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  be er rę ęs se wi ew ic re nc cz en ce
+a  1  1  1  1  1  1  1  1  0  0  1  0  0
+b  1  1  0  0  0  1  1  1  1  1  1  1  1</code></pre>
+</div>
+</div>
+</section>
+<section id="q-gramy-przykład-w-r-1" class="slide level2">
+<h2><span class="math inline">\(q\)</span>-gramy (Przykład w R)</h2>
+<ul>
+<li>odległość Jaccarda na 1-gramach</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3</code></pre>
+</div>
+</div>
+<ul>
+<li>odległość <span class="math inline">\(q\)</span>-gram na 1-gramach</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+</section>
+<section id="odległość-q-gram-ćwiczenia" class="slide level2">
+<h2>Odległość <span class="math inline">\(q\)</span>-gram (ćwiczenia)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_4b92d2eb" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+<ul>
+<li>Ćwiczenie: ile wynosi odległość <span class="math inline">\(q\)</span>-gram dla następujących napisów:
+<ul>
+<li>warmińsko-mazurskie / warminsok-mazurskie</li>
+<li>miasto poznań / m.ppznań</li>
+</ul>
+Wykorzystując <span class="math inline">\(q\)</span> równe 2 i 3.</li>
+</ul>
+</section>
+<section id="odległość-q-gram-rozwiązania-ćwiczeń" class="slide level2">
+<h2>Odległość <span class="math inline">\(q\)</span>-gram (rozwiązania ćwiczeń)</h2>
+<ul>
+<li>ćwiczenie 1</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"warmińsko-mazurskie"</span>,</span>
+<span id="cb57-2"><a href="#cb57-2"></a>       <span class="at">b =</span> <span class="st">"warminsok-mazurskie"</span>,</span>
+<span id="cb57-3"><a href="#cb57-3"></a>       <span class="at">q =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  wa ńs zu ar rm sk ur so rs mi o- ok ns iń ko ma ki k- az ie in -m
+a  1  1  1  1  1  2  1  0  1  1  1  0  0  1  1  1  1  0  1  1  0  1
+b  1  0  1  1  1  1  1  1  1  1  0  1  1  0  0  1  1  1  1  1  1  1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">stringdist</span>(<span class="at">a =</span> <span class="st">"warmińsko-mazurskie"</span>,</span>
+<span id="cb59-2"><a href="#cb59-2"></a>           <span class="at">b =</span> <span class="st">"warminsok-mazurskie"</span>,</span>
+<span id="cb59-3"><a href="#cb59-3"></a>           <span class="at">method =</span> <span class="st">"qgram"</span>,</span>
+<span id="cb59-4"><a href="#cb59-4"></a>           <span class="at">q=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+</section>
+<section id="odległość-q-gram-rozwiązania-ćwiczeń-1" class="slide level2">
+<h2>Odległość <span class="math inline">\(q\)</span>-gram (rozwiązania ćwiczeń)</h2>
+<ul>
+<li>ćwiczenie 2</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"miasto poznań"</span>,</span>
+<span id="cb61-2"><a href="#cb61-2"></a>       <span class="at">b =</span> <span class="st">"m.ppznań"</span>,</span>
+<span id="cb61-3"><a href="#cb61-3"></a>       <span class="at">q =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mi st to zn o  po pp pz oz na ia m. as ań  p .p
+a  1  1  1  1  1  1  0  0  1  1  1  0  1  1  1  0
+b  0  0  0  1  0  0  1  1  0  1  0  1  0  1  0  1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="fu">stringdist</span>(<span class="at">a =</span> <span class="st">"miasto poznań"</span>,</span>
+<span id="cb63-2"><a href="#cb63-2"></a>           <span class="at">b =</span> <span class="st">"m.ppznań"</span>,</span>
+<span id="cb63-3"><a href="#cb63-3"></a>           <span class="at">method =</span> <span class="st">"qgram"</span>,</span>
+<span id="cb63-4"><a href="#cb63-4"></a>           <span class="at">q=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+</div>
 </section>
 <section id="odległość-cosinusowa" class="slide level2">
 <h2>Odległość cosinusowa</h2>
+<ul>
+<li>miara odległosci (tak naprawdę kąt) między dwoma wektorami utworzonymi przez <span class="math inline">\(q\)</span>-gramy</li>
+<li>wzór:</li>
+</ul>
+<p><span class="math display">\[
+1-\frac{v_1 v_2}{||v_1||_2||v_2||_2},
+\]</span></p>
+<p>gdzie <span class="math inline">\(||.||_2\)</span> oznacza normę Euklidesową <span class="math inline">\(\sqrt{\sum_i v_{1,i}^2}\)</span>.</p>
+</section>
+<section id="odległość-cosinusowa-przykład" class="slide level2">
+<h2>Odległość cosinusowa (przykład)</h2>
+<ul>
+<li>rozważmy tylko imię: maciej i maicej i 2-gramy</li>
+<li>pierwsze: <code>{ma, ac, ci,ie,ej}</code></li>
+<li>drugie: <code>{ma, ai, ic, ce, ej}</code></li>
+<li>w zapisie wektorowym:</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  ma ac ci ie ej ic ai ce
+a  1  1  1  1  1  0  0  0
+b  1  0  0  0  1  1  1  1</code></pre>
+</div>
+</div>
+<ul>
+<li>odległość:</li>
+</ul>
+<p><span class="math display">\[
+1- \frac{v_1 v_2}{||v_1||_2||v_2||_2} = \frac{2}{5} = 0.6.
+\]</span></p>
+</section>
+<section id="odległość-cosinusowa-przykład-w-r" class="slide level2">
+<h2>Odległość cosinusowa (przykład w R)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">stringdist</span>(<span class="st">"maciej"</span>,</span>
+<span id="cb66-2"><a href="#cb66-2"></a>           <span class="st">"maicej"</span>,</span>
+<span id="cb66-3"><a href="#cb66-3"></a>           <span class="at">method =</span> <span class="st">"cosine"</span>,</span>
+<span id="cb66-4"><a href="#cb66-4"></a>           <span class="at">q=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6</code></pre>
+</div>
+</div>
+</section>
+<section id="odległość-cosinowa-ćwiczenia" class="slide level2">
+<h2>Odległość cosinowa (ćwiczenia)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_99bca32a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+<ul>
+<li>Ćwiczenie: ile wynosi odległość <span class="math inline">\(q\)</span>-gram dla następujących napisów:
+<ul>
+<li>warmińsko-mazurskie / warminsok-mazurskie</li>
+<li>miasto poznań / m.ppznań</li>
+</ul>
+Wykorzystując <span class="math inline">\(q\)</span> równe 2 i 3.</li>
+</ul>
+</section>
+<section id="odległość-cosinowa-rozwiązania-ćwiczeń" class="slide level2">
+<h2>Odległość cosinowa (rozwiązania ćwiczeń)</h2>
+<ul>
+<li>ćwiczenie 1</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"warmińsko-mazurskie"</span>,</span>
+<span id="cb68-2"><a href="#cb68-2"></a>       <span class="at">b =</span> <span class="st">"warminsok-mazurskie"</span>,</span>
+<span id="cb68-3"><a href="#cb68-3"></a>       <span class="at">q =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  wa ńs zu ar rm sk ur so rs mi o- ok ns iń ko ma ki k- az ie in -m
+a  1  1  1  1  1  2  1  0  1  1  1  0  0  1  1  1  1  0  1  1  0  1
+b  1  0  1  1  1  1  1  1  1  1  0  1  1  0  0  1  1  1  1  1  1  1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">stringdist</span>(<span class="at">a =</span> <span class="st">"warmińsko-mazurskie"</span>,</span>
+<span id="cb70-2"><a href="#cb70-2"></a>           <span class="at">b =</span> <span class="st">"warminsok-mazurskie"</span>,</span>
+<span id="cb70-3"><a href="#cb70-3"></a>           <span class="at">method =</span> <span class="st">"cosine"</span>,</span>
+<span id="cb70-4"><a href="#cb70-4"></a>           <span class="at">q=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2621352</code></pre>
+</div>
+</div>
+</section>
+<section id="odległość-cosinowa-rozwiązania-ćwiczeń-1" class="slide level2">
+<h2>Odległość cosinowa (rozwiązania ćwiczeń)</h2>
+<ul>
+<li>ćwiczenie 2</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">qgrams</span>(<span class="at">a =</span> <span class="st">"miasto poznań"</span>,</span>
+<span id="cb72-2"><a href="#cb72-2"></a>       <span class="at">b =</span> <span class="st">"m.ppznań"</span>,</span>
+<span id="cb72-3"><a href="#cb72-3"></a>       <span class="at">q =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mi st to zn o  po pp pz oz na ia m. as ań  p .p
+a  1  1  1  1  1  1  0  0  1  1  1  0  1  1  1  0
+b  0  0  0  1  0  0  1  1  0  1  0  1  0  1  0  1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">stringdist</span>(<span class="at">a =</span> <span class="st">"miasto poznań"</span>,</span>
+<span id="cb74-2"><a href="#cb74-2"></a>           <span class="at">b =</span> <span class="st">"m.ppznań"</span>,</span>
+<span id="cb74-3"><a href="#cb74-3"></a>           <span class="at">method =</span> <span class="st">"cosine"</span>,</span>
+<span id="cb74-4"><a href="#cb74-4"></a>           <span class="at">q=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6726732</code></pre>
+</div>
+</div>
 </section>
 <section id="odległość-jaro" class="slide level2">
 <h2>Odległość Jaro</h2>
+<ul>
+<li>Podobieństwo Jaro między ciągami znaków a i b wyraża się następującym wzorem:</li>
+<li>Wzór</li>
+</ul>
+<p><span class="math display">\[
+\left\{\begin{array}{ll}0 &amp; \text { dla } m=0 \\ 1- \frac{1}{3}\left(\frac{m}{|a|}+\frac{m}{|b|}+\frac{m-t}{m}\right) &amp; \text { dla } m \neq 0\end{array}\right.
+\]</span> gdzie</p>
+<ul>
+<li>(m) to liczba pasujących znaków. Dwa znaki, odpowiednio z a i (b), sa uważane za pasujące tylko wtedy, gdy są takie same i są nie dalej niż () znaków od siebie,</li>
+<li>(t) to liczba dopasowań po transpozycji drugiego ciągu znaków, podzielona przez 2.</li>
+</ul>
+</section>
+<section id="odległość-jaro-przykład-w-r" class="slide level2">
+<h2>Odległość Jaro (przykład w R)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="fu">stringdist</span>(<span class="st">"maciej"</span>,</span>
+<span id="cb76-2"><a href="#cb76-2"></a>           <span class="st">"maicej"</span>,</span>
+<span id="cb76-3"><a href="#cb76-3"></a>           <span class="at">method =</span> <span class="st">"jw"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05555556</code></pre>
+</div>
+</div>
 </section>
 <section id="odległość-jaro-winklera" class="slide level2">
 <h2>Odległość Jaro-Winklera</h2>
+<ul>
+<li>Algorytm Winklera jest ulepszeniem algorytmu Jaro, powstałym poprzez zastosowanie pomysłów opartych na obserwacjach empirycznych, które wykazały, że mniej błędów występuje zwykle na początku błędnie zapisanych nazwisk osób</li>
+<li>Algorytm Winklera zwiększa zatem miarę podobieństwa Jaro dla identycznych znaków początkowych:</li>
+</ul>
+<p><span class="math display">\[
+d_{\mathrm{jw}}(a, b)=d_{\mathrm{jaro}}(a, b)[1-p \ell(a, b)],
+\]</span></p>
+<p>gdzie <span class="math inline">\(\ell(.)\)</span> jest długością wspólnego prefiksu na początku obu ciągów, maksymalnie wynoszącą 4, a p jest współczynnikiem skalowania (nie więcej niż 0.25)</p>
+</section>
+<section id="odległość-jaro-winklera-przykład-w-r" class="slide level2">
+<h2>Odległość Jaro-Winklera (przykład w R)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">stringdist</span>(<span class="st">"maciej"</span>,</span>
+<span id="cb78-2"><a href="#cb78-2"></a>           <span class="st">"maicej"</span>,</span>
+<span id="cb78-3"><a href="#cb78-3"></a>           <span class="at">method =</span> <span class="st">"jw"</span>,</span>
+<span id="cb78-4"><a href="#cb78-4"></a>           <span class="at">p =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04444444</code></pre>
+</div>
+</div>
+</section>
+<section id="podsumowanie" class="slide level2">
+<h2>Podsumowanie</h2>
+<ul>
+<li>Ostatecznie wybór zależy od zastosowania, ale istnieją pewne ogólne rozważania.</li>
+<li>Wybór między metryką opartą na edycji lub metryką heurystyczną z jednej strony a odległością opartą na q-gramie z drugiej, jest w pewnym stopniu zależy od długości ciągu znaków.</li>
+<li>W przeciwieństwie do metryk opartych na edycji lub heurystycznych, metryki oparte na q-gramach można łatwo obliczyć między bardzo długimi ciągami tekstowymi, ponieważ liczba q-gramów napotykanych w języku w języku naturalnym (np. q ≥ 3) jest zwykle znacznie mniejsza niż q-gramy dozwolone przez alfabet.</li>
+</ul>
+</section>
+<section id="podsumowanie-1" class="slide level2">
+<h2>Podsumowanie</h2>
+<ul>
+<li>Wybór odległości opartej na edycji zależy głównie od wymaganej dokładności. Na przykład, w słowniku gdzie różnice między dopasowanymi i słownikowymi elementami są niewielkie, odległość edycji, która pozwala na więcej typów operacji edycji (takich jak optymalne wyrównanie ciągów lub odległość Damerau-Levenshtein) może dać lepsze wyniki.</li>
+<li>Heurystyczne odległości Jaro i Jaro-Winklera zostały zaprojektowane dla zostały zaprojektowane z myślą o stosunkowo krótkich ciągach znaków wpisywanych przez człowieka, więc ich obszar zastosowania jest jasny.</li>
+</ul>
+</section></section>
+<section>
+<section id="blokowanie-rekordów" class="title-slide slide level1 center" data-number="4">
+<h1><span class="header-section-number">4</span> Blokowanie rekordów</h1>
+
+</section>
+<section id="idea-blokowania-rekordów" class="slide level2">
+<h2>Idea blokowania rekordów</h2>
+<ul>
+<li>mając 3 rekordy (a, b, c) w bazie danych liczba możliwych porównań to 3 (ab, ac, bc)</li>
+<li>mając 10 rekordów mamy: 45</li>
+<li>mając 50000 rekordów mamy: 1.249975^{9}</li>
+<li>liczba kombinacji: n*(n-1)/2</li>
+<li>nie da się tego zrobić dla dużych zbiorów danych</li>
+</ul>
+</section>
+<section id="z-czego-się-korzysta" class="slide level2">
+<h2>Z czego się korzysta?</h2>
+<ul>
+<li>blokowanie wg zmiennych, które są dobrej jakości (np. rok urodzenia, płeć),</li>
+<li>blokowanie po pierwszych literach imion i nazwisk,</li>
+<li>może się jednak zdarzyć tak, że daty urodzeń czy imiona są błędnie zapisane,</li>
+<li>wtedy warto skorzystać z wyszukiwania z wykorzystaniem (przybliżonych) najbliższych sąsiadów i grafów.</li>
+</ul>
+</section>
+<section id="przykład" class="slide level2">
+<h2>Przykład</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>dane <span class="ot">&lt;-</span> <span class="fu">qgrams</span>(<span class="at">.list =</span> <span class="fu">list</span>(<span class="st">"maciejj"</span>, <span class="st">"majej"</span>, <span class="st">"ana"</span>, <span class="st">"annna"</span>), <span class="at">q=</span><span class="dv">2</span>)</span>
+<span id="cb80-2"><a href="#cb80-2"></a>dane_rej <span class="ot">&lt;-</span> <span class="fu">qgrams</span>(<span class="at">.list =</span> <span class="fu">list</span>(<span class="st">"maciej"</span>, <span class="st">"anna"</span>), <span class="at">q=</span><span class="dv">2</span>)</span>
+<span id="cb80-3"><a href="#cb80-3"></a>vars <span class="ot">&lt;-</span> <span class="fu">intersect</span>(<span class="fu">colnames</span>(dane), <span class="fu">colnames</span>(dane_rej))</span>
+<span id="cb80-4"><a href="#cb80-4"></a>wysz <span class="ot">&lt;-</span> <span class="fu">nn2</span>(<span class="at">data =</span> dane[,vars], dane_rej[, vars], , <span class="at">k=</span> <span class="dv">1</span>)</span>
+<span id="cb80-5"><a href="#cb80-5"></a>do_grafu <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">query =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">neg =</span> <span class="fu">rep</span>(wysz<span class="sc">$</span>nn.idx[,<span class="dv">1</span>], <span class="at">each=</span><span class="dv">2</span>))</span>
+<span id="cb80-6"><a href="#cb80-6"></a>g1 <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(do_grafu)</span>
+<span id="cb80-7"><a href="#cb80-7"></a><span class="fu">plot</span>(g1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="prezentacja_files/figure-revealjs/przyklad-1.png" width="960" class="r-stretch"></section></section>
+<section id="pakiet-reclin2" class="title-slide slide level1 center" data-number="5">
+<h1><span class="header-section-number">5</span> Pakiet <code>reclin2</code></h1>
+<p>Przejdzmy do pakietu <code>reclin2</code></p>
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
