@@ -1,0 +1,5 @@
+"0","razem <- merge(x = dane1,"
+"0","               y = dane2,"
+"0","               by = ""id"","
+"0","               all = TRUE)"
+"0","razem"

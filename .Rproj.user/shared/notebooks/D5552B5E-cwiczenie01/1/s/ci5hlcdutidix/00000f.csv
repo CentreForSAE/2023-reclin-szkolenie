@@ -1,0 +1,5 @@
+"0","razem <- transform(razem,"
+"0","                   imie_sim1 = stringsim(imie.x, imie.y, method = ""jw""),"
+"0","                   imie_sim2 = stringsim(imie.x, imie.y, method = ""lcs""),"
+"0","                   imie_sim3 = stringsim(imie.x, imie.y, method = ""jaccard"", q=2))"
+"0","razem"
