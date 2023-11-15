@@ -1,0 +1,28 @@
+{
+    "id": "24C5FE61",
+    "path": "~/git/urzad/ads/szkolenie-reclin/reclin2-blokowanie.Rmd",
+    "project_path": "reclin2-blokowanie.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1700078039428.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "tempName": "Untitled1",
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "0,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1700079174,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1700079174264,
+    "read_only": false,
+    "read_only_alternatives": []
+}

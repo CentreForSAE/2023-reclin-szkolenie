@@ -1,0 +1,5 @@
+"0","score <- problink_em(~ imie + imie2 + nazwisko + adres,"
+"0","                     data = pary_comp)"
+"0","score"
+"1","M- and u-probabilities estimated by the EM-algorithm:
+"

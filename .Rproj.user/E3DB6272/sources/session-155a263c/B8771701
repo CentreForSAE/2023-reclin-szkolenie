@@ -1,0 +1,29 @@
+{
+    "id": "B8771701",
+    "path": "~/git/urzad/ads/szkolenie-reclin/reclin2-nienadz.Rmd",
+    "project_path": "reclin2-nienadz.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1700051780415.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "tempName": "Untitled1",
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "136,33",
+        "scrollLine": "126",
+        "docOutlineVisible": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1700080402,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1700080402117,
+    "read_only": false,
+    "read_only_alternatives": []
+}

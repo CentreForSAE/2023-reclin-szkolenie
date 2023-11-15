@@ -1,9 +1,13 @@
 {
     "sortOrder": [
         {
+            "columnIndex": 4,
+            "ascending": false
+        },
+        {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         }
     ],
-    "path": "~/git/urzad/ads/szkolenie-reclin/dane"
+    "path": "~/git/urzad/ads/szkolenie-reclin"
 }
