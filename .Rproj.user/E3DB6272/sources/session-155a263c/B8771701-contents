@@ -97,6 +97,11 @@ dane_wynikowe <- link(pary_comp, selection = "threshold")
 dane_wynikowe
 ```
 
+```{r}
+dane_wynikowe <- link(pary_comp, selection = "threshold", all_y = TRUE)
+dane_wynikowe
+```
+
 Porównanie z wykorzystaniem jaro winklera
 
 ```{r}
