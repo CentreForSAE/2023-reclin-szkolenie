@@ -793,6 +793,14 @@ stringdist("maciej",
 + Heurystyczne odległości Jaro i Jaro-Winklera zostały zaprojektowane dla
 zostały zaprojektowane z myślą o stosunkowo krótkich ciągach znaków wpisywanych przez człowieka, więc ich obszar zastosowania jest jasny.
 
+## Ćwiczenie
+
+1. Wczytać dwa zbiory: `zbior1.csv` i `zbior2.csv` z github (folder `dane/`).
+2. Wyznaczyć odległości między rekordami wykorzystując 3 różne miary odległości.
+3. Wybrać wiersze, które powinny dotyczyć tych samych osób.
+
+## Ćwiczenie -- Rozwiązanie
+
 # Blokowanie rekordów
 
 ## Idea blokowania rekordów
