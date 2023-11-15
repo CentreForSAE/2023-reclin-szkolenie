@@ -455,7 +455,7 @@ $$
 
 -   suma unikalnych znaków: 9
 
--   odległosć: 1 - 7/9 = 2/9 ($\aprox$ 0.22)
+-   odległosć: 1 - 7/9 = 2/9 ($\approx$ 0.22)
 
 ## Odległość Jaccarda (przykład)
 
@@ -675,7 +675,7 @@ res
 + odległość:
 
 $$
-1- \frac{v_1 v_2}{||v_1||_2||v_2||_2} = \frac{`r licznik`}{`r mianownik`} = `r 1-licznik/mianownik`.
+1- \frac{v_1 v_2}{||v_1||_2||v_2||_2} = 1 - \frac{`r licznik`}{`r mianownik`} = `r 1-licznik/mianownik`.
 $$
 
 ## Odległość cosinusowa (przykład w R)
@@ -746,10 +746,15 @@ $$
 $$
 gdzie
 
-+ \(m\) to liczba pasujących znaków. Dwa znaki, odpowiednio z a i \(b\), sa uważane
-za pasujące tylko wtedy, gdy są takie same i są nie dalej niż \(\left\lfloor\frac{\max (|a|,|b|)}{2}\right\rfloor-1\)
++ $m$ to liczba pasujących znaków. Dwa znaki, odpowiednio z a i \(b\), sa uważane
+za pasujące tylko wtedy, gdy są takie same i są nie dalej niż 
+
+$$
+\left\lfloor\frac{\max (|a|,|b|)}{2}\right\rfloor-1
+$$
+
 znaków od siebie,
-+ \(t\) to liczba dopasowań po transpozycji drugiego ciągu znaków, podzielona
++ $t$ to liczba dopasowań po transpozycji drugiego ciągu znaków, podzielona
 przez 2.
 
 ## Odległość Jaro (przykład w R)
@@ -795,11 +800,7 @@ zostały zaprojektowane z myślą o stosunkowo krótkich ciągach znaków wpisyw
 
 ## Ćwiczenie
 
-1. Wczytać dwa zbiory: `zbior1.csv` i `zbior2.csv` z github (folder `dane/`).
-2. Wyznaczyć odległości między rekordami wykorzystując 3 różne miary odległości.
-3. Wybrać wiersze, które powinny dotyczyć tych samych osób.
-
-## Ćwiczenie -- Rozwiązanie
++ Zapisano w pliku `cwiczenie01.Rmd`.
 
 # Blokowanie rekordów
 
