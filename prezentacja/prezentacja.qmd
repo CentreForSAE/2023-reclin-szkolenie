@@ -398,8 +398,7 @@ stringdist(a = "miasto Poznań",
 countdown(minutes = 5, bottom = 0)
 ```
 
--   Ćwiczenie: ile wynosi odległość OSA dla następujących
-    napisów:
+-   Ćwiczenie: ile wynosi odległość OSA dla następujących napisów:
     -   warmińsko-mazurskie / warminsok-mazurskie
     -   miasto Poznań / m.Opznań
 
@@ -478,8 +477,7 @@ $$
 countdown(minutes = 10, bottom = 0)
 ```
 
--   Ćwiczenie: ile wynosi odległość Jaccarda dla następujących
-    napisów:
+-   Ćwiczenie: ile wynosi odległość Jaccarda dla następujących napisów:
     -   warmińsko-mazurskie / warminsok-mazurskie
     -   miasto poznań / m.ppznań
 
@@ -560,9 +558,9 @@ stringdist(a = "miasto poznań",
 
 ## $q$-gramy (Przykład)
 
-+ 1-gramy: `{B,e,r,ę,s,e,w,i,cz}`
-+ 2-gramy: `{Be, er, rę, ęs, se, ew, wi, ic, cz}`
-+ 3-gramy: `{Ber, erę, ręs, ęse, sew, wic, ewi, icz}`
+-   1-gramy: `{B,e,r,ę,s,e,w,i,cz}`
+-   2-gramy: `{Be, er, rę, ęs, se, ew, wi, ic, cz}`
+-   3-gramy: `{Ber, erę, ręs, ęse, sew, wic, ewi, icz}`
 
 ## $q$-gramy (Przykład w R)
 
@@ -580,7 +578,8 @@ qgrams(a = "beręsewicz",
 
 ## $q$-gramy (Przykład w R)
 
-+ odległość Jaccarda na 1-gramach
+-   odległość Jaccarda na 1-gramach
+
 ```{r jac-qgram1}
 stringdist(a = "beręsewicz",
            b = "berencewicz",
@@ -588,7 +587,7 @@ stringdist(a = "beręsewicz",
            q = 1)
 ```
 
-+ odległość $q$-gram na 1-gramach
+-   odległość $q$-gram na 1-gramach
 
 ```{r jac-qgram2}
 stringdist(a = "beręsewicz",
@@ -603,13 +602,13 @@ stringdist(a = "beręsewicz",
 countdown(minutes = 10, bottom = 0)
 ```
 
--   Ćwiczenie: ile wynosi odległość $q$-gram dla następujących
-    napisów:
+-   Ćwiczenie: ile wynosi odległość $q$-gram dla następujących napisów:
+
     -   warmińsko-mazurskie / warminsok-mazurskie
     -   miasto poznań / m.ppznań
-    
+
     Wykorzystując $q$ równe 2 i 3.
-    
+
 ## Odległość $q$-gram (rozwiązania ćwiczeń)
 
 -   ćwiczenie 1
@@ -644,11 +643,11 @@ stringdist(a = "miasto poznań",
            q=2)
 ```
 
-
 ## Odległość cosinusowa
 
-+ miara odległosci (tak naprawdę kąt) między dwoma wektorami utworzonymi przez $q$-gramy
-+ wzór:
+-   miara odległosci (tak naprawdę kąt) między dwoma wektorami
+    utworzonymi przez $q$-gramy
+-   wzór:
 
 $$
 1-\frac{v_1 v_2}{||v_1||_2||v_2||_2},
@@ -658,10 +657,10 @@ gdzie $||.||_2$ oznacza normę Euklidesową $\sqrt{\sum_i v_{1,i}^2}$.
 
 ## Odległość cosinusowa (przykład)
 
-+ rozważmy tylko imię: maciej i maicej i 2-gramy
-+ pierwsze: `{ma, ac, ci,ie,ej}`
-+ drugie: `{ma, ai, ic, ce, ej}`
-+ w zapisie wektorowym:
+-   rozważmy tylko imię: maciej i maicej i 2-gramy
+-   pierwsze: `{ma, ac, ci,ie,ej}`
+-   drugie: `{ma, ai, ic, ce, ej}`
+-   w zapisie wektorowym:
 
 ```{r}
 res <- qgrams(a= "maciej", b="maicej", q=2)
@@ -672,7 +671,7 @@ mianownik <- sqrt(sum(v1^2))*sqrt(sum(v2^2))
 res
 ```
 
-+ odległość:
+-   odległość:
 
 $$
 1- \frac{v_1 v_2}{||v_1||_2||v_2||_2} = 1 - \frac{`r licznik`}{`r mianownik`} = `r 1-licznik/mianownik`.
@@ -693,13 +692,12 @@ stringdist("maciej",
 countdown(minutes = 10, bottom = 0)
 ```
 
--   Ćwiczenie: ile wynosi odległość $q$-gram dla następujących
-    napisów:
+-   Ćwiczenie: ile wynosi odległość $q$-gram dla następujących napisów:
+
     -   warmińsko-mazurskie / warminsok-mazurskie
     -   miasto poznań / m.ppznań
-    
+
     Wykorzystując $q$ równe 2 i 3.
-    
 
 ## Odległość cosinowa (rozwiązania ćwiczeń)
 
@@ -735,27 +733,26 @@ stringdist(a = "miasto poznań",
            q=2)
 ```
 
-
 ## Odległość Jaro
 
-+ Podobieństwo Jaro między ciągami znaków a i b wyraża się następującym wzorem:
-+ Wzór
+-   Podobieństwo Jaro między ciągami znaków a i b wyraża się
+    następującym wzorem:
+-   Wzór
 
 $$
 \left\{\begin{array}{ll}0 & \text { dla } m=0 \\ 1- \frac{1}{3}\left(\frac{m}{|a|}+\frac{m}{|b|}+\frac{m-t}{m}\right) & \text { dla } m \neq 0\end{array}\right.
-$$
-gdzie
+$$ gdzie
 
-+ $m$ to liczba pasujących znaków. Dwa znaki, odpowiednio z a i \(b\), sa uważane
-za pasujące tylko wtedy, gdy są takie same i są nie dalej niż 
+-   $m$ to liczba pasujących znaków. Dwa znaki, odpowiednio z a i (b),
+    sa uważane za pasujące tylko wtedy, gdy są takie same i są nie dalej
+    niż
 
 $$
 \left\lfloor\frac{\max (|a|,|b|)}{2}\right\rfloor-1
 $$
 
-znaków od siebie,
-+ $t$ to liczba dopasowań po transpozycji drugiego ciągu znaków, podzielona
-przez 2.
+znaków od siebie, + $t$ to liczba dopasowań po transpozycji drugiego
+ciągu znaków, podzielona przez 2.
 
 ## Odległość Jaro (przykład w R)
 
@@ -767,15 +764,20 @@ stringdist("maciej",
 
 ## Odległość Jaro-Winklera
 
-+ Algorytm Winklera jest ulepszeniem algorytmu Jaro, powstałym poprzez zastosowanie pomysłów opartych na obserwacjach empirycznych, które wykazały, że mniej błędów występuje zwykle na początku błędnie zapisanych nazwisk osób
-+ Algorytm Winklera zwiększa zatem miarę podobieństwa Jaro dla identycznych znaków początkowych:
+-   Algorytm Winklera jest ulepszeniem algorytmu Jaro, powstałym poprzez
+    zastosowanie pomysłów opartych na obserwacjach empirycznych, które
+    wykazały, że mniej błędów występuje zwykle na początku błędnie
+    zapisanych nazwisk osób
+-   Algorytm Winklera zwiększa zatem miarę podobieństwa Jaro dla
+    identycznych znaków początkowych:
 
 $$
 d_{\mathrm{jw}}(a, b)=d_{\mathrm{jaro}}(a, b)[1-p \ell(a, b)],
 $$
 
-gdzie $\ell(.)$ jest długością wspólnego prefiksu na początku obu ciągów, maksymalnie
-wynoszącą 4, a p jest współczynnikiem skalowania (nie więcej niż 0.25)
+gdzie $\ell(.)$ jest długością wspólnego prefiksu na początku obu
+ciągów, maksymalnie wynoszącą 4, a p jest współczynnikiem skalowania
+(nie więcej niż 0.25)
 
 ## Odległość Jaro-Winklera (przykład w R)
 
@@ -788,36 +790,54 @@ stringdist("maciej",
 
 ## Podsumowanie
 
-+ Ostatecznie wybór zależy od zastosowania, ale istnieją pewne ogólne rozważania. 
-+ Wybór między metryką opartą na edycji lub metryką heurystyczną z jednej strony a odległością opartą na q-gramie z drugiej, jest w pewnym stopniu zależy od długości ciągu znaków. 
-+ W przeciwieństwie do metryk opartych na edycji lub heurystycznych, metryki oparte na q-gramach można łatwo obliczyć między bardzo długimi ciągami tekstowymi, ponieważ liczba q-gramów napotykanych w języku w języku naturalnym (np. q ≥ 3) jest zwykle znacznie mniejsza niż q-gramy dozwolone przez alfabet. 
+-   Ostatecznie wybór zależy od zastosowania, ale istnieją pewne ogólne
+    rozważania.
+-   Wybór między metryką opartą na edycji lub metryką heurystyczną z
+    jednej strony a odległością opartą na q-gramie z drugiej, jest w
+    pewnym stopniu zależy od długości ciągu znaków.
+-   W przeciwieństwie do metryk opartych na edycji lub heurystycznych,
+    metryki oparte na q-gramach można łatwo obliczyć między bardzo
+    długimi ciągami tekstowymi, ponieważ liczba q-gramów napotykanych w
+    języku w języku naturalnym (np. q ≥ 3) jest zwykle znacznie mniejsza
+    niż q-gramy dozwolone przez alfabet.
 
 ## Podsumowanie
 
-+ Wybór odległości opartej na edycji zależy głównie od wymaganej dokładności. Na przykład, w słowniku gdzie różnice między dopasowanymi i słownikowymi elementami są niewielkie, odległość edycji, która pozwala na więcej typów operacji edycji (takich jak optymalne wyrównanie ciągów lub odległość Damerau-Levenshtein) może dać lepsze wyniki. 
-+ Heurystyczne odległości Jaro i Jaro-Winklera zostały zaprojektowane dla
-zostały zaprojektowane z myślą o stosunkowo krótkich ciągach znaków wpisywanych przez człowieka, więc ich obszar zastosowania jest jasny.
+-   Wybór odległości opartej na edycji zależy głównie od wymaganej
+    dokładności. Na przykład, w słowniku gdzie różnice między
+    dopasowanymi i słownikowymi elementami są niewielkie, odległość
+    edycji, która pozwala na więcej typów operacji edycji (takich jak
+    optymalne wyrównanie ciągów lub odległość Damerau-Levenshtein) może
+    dać lepsze wyniki.
+-   Heurystyczne odległości Jaro i Jaro-Winklera zostały zaprojektowane
+    dla zostały zaprojektowane z myślą o stosunkowo krótkich ciągach
+    znaków wpisywanych przez człowieka, więc ich obszar zastosowania
+    jest jasny.
 
 ## Ćwiczenie
 
-+ Zapisano w pliku `cwiczenie01.Rmd`.
+-   Zapisano w pliku `cwiczenie01.Rmd`.
 
 # Blokowanie rekordów
 
 ## Idea blokowania rekordów
 
-+ mając 3 rekordy (a, b, c) w bazie danych liczba możliwych porównań to 3 (ab, ac, bc)
-+ mając 10 rekordów mamy: 45
-+ mając 50000 rekordów mamy: `r choose(50000,2)`
-+ liczba kombinacji: n*(n-1)/2
-+ nie da się tego zrobić dla dużych zbiorów danych
+-   mając 3 rekordy (a, b, c) w bazie danych liczba możliwych porównań
+    to 3 (ab, ac, bc)
+-   mając 10 rekordów mamy: 45
+-   mając 50000 rekordów mamy: `r choose(50000,2)`
+-   liczba kombinacji: n\*(n-1)/2
+-   nie da się tego zrobić dla dużych zbiorów danych
 
 ## Z czego się korzysta?
 
-+ blokowanie wg zmiennych, które są dobrej jakości (np. rok urodzenia, płeć),
-+ blokowanie po pierwszych literach imion i nazwisk,
-+ może się jednak zdarzyć tak, że daty urodzeń czy imiona są błędnie zapisane,
-+ wtedy warto skorzystać z wyszukiwania z wykorzystaniem (przybliżonych) najbliższych sąsiadów i grafów.
+-   blokowanie wg zmiennych, które są dobrej jakości (np. rok urodzenia,
+    płeć),
+-   blokowanie po pierwszych literach imion i nazwisk,
+-   może się jednak zdarzyć tak, że daty urodzeń czy imiona są błędnie
+    zapisane,
+-   wtedy warto skorzystać z wyszukiwania z wykorzystaniem
+    (przybliżonych) najbliższych sąsiadów i grafów.
 
 ## Przykład
 
@@ -831,8 +851,33 @@ g1 <- graph_from_data_frame(do_grafu)
 plot(g1)
 ```
 
+## Pakiety w R do blokowania rekordów
+
+-   `klsh` -- pakiet wykorzystuje metodę *Locality-sensitive hashing*
+    (LSH) do redukcji wymiarów oraz analizę skupień do grupowania
+    obiektów,
+-   `blocking` -- pakiet oparty na algorytmach przybliżonych
+    najbliższych sąsiadów (Annoy, HNSW, LSH) i na razie jest w fazie
+    rozwoju.
 
 # Pakiet `reclin2`
 
-Przejdzmy do pakietu `reclin2`
+## Teoria
 
+![Fellegi, I. P., & Sunter, A. B. (1969). A theory for record linkage.
+Journal of the American Statistical Association, 64(328),
+1183-1210.](images/fspub.png){fig-align="center"}
+
+## Pakiety w R do record linkage
+
+-   `RecordLinkage` -- pierwszy pakiet do record linkage i deduplikacji
+    w R (Sariyar, M., & Borg, A. (2010). The RecordLinkage Package:
+    Detecting Errors in Data. R Journal, 2(2), 61.)
+-   `fastLink` -- pakiet implementujacy algorytm Fellegiego i Suntera
+    uwzględniający informacje dodatkowe (Using a Probabilistic Model to
+    Assist Merging of Large-scale Administrative Records)
+-   `reclin2` -- pakiet implementujacy PRL (van der Laan, D. J. (2022).
+    reclin2: a Toolkit for Record Linkage and Deduplication. R Journal,
+    14(2).)
+
+Przejdzmy do pakietu `reclin2`
